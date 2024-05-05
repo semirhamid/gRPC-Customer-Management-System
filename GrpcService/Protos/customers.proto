@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+package customers;
+
+service Customer {
+  rpc GetCustomerInfo (CustomerFindModel) returns (CustomerDataModel);
+  rpc GetAllCustomers (AllCustomerModel) returns (stream CustomerDataModel);
+}
+
+message CustomerFindModel {
+  int32 userId = 1;
+}
+
+message CustomerDataModel {
+  string firstName = 1;
+  string lastName = 2;
+}
+
+message AllCustomerModel {
+}
